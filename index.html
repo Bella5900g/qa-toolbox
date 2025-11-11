@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA-Toolbox 🧰</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- CSS Customizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- Cabeçalho -->
+        <header class="text-center mb-4">
+            <h1>QA-Toolbox 🧰</h1>
+            <p class="text-muted">Ferramentas essenciais para QA em um só lugar</p>
+        </header>
+
+        <!-- Navegação por Abas -->
+        <ul class="nav nav-tabs mb-4" id="abasNavegacao" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="aba-texto-tab" data-bs-toggle="tab" data-bs-target="#aba-texto" type="button" role="tab" aria-controls="aba-texto" aria-selected="true">Texto</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="aba-encoders-tab" data-bs-toggle="tab" data-bs-target="#aba-encoders" type="button" role="tab" aria-controls="aba-encoders" aria-selected="false">Encoders/Decoders</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="aba-formatadores-tab" data-bs-toggle="tab" data-bs-target="#aba-formatadores" type="button" role="tab" aria-controls="aba-formatadores" aria-selected="false">Formatadores</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="aba-geradores-tab" data-bs-toggle="tab" data-bs-target="#aba-geradores" type="button" role="tab" aria-controls="aba-geradores" aria-selected="false">Geradores de Dados</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="aba-comparador-tab" data-bs-toggle="tab" data-bs-target="#aba-comparador" type="button" role="tab" aria-controls="aba-comparador" aria-selected="false">Comparador</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="aba-jwt-hash-tab" data-bs-toggle="tab" data-bs-target="#aba-jwt-hash" type="button" role="tab" aria-controls="aba-jwt-hash" aria-selected="false">JWT & Hash</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="aba-regex-tab" data-bs-toggle="tab" data-bs-target="#aba-regex" type="button" role="tab" aria-controls="aba-regex" aria-selected="false">Regex</button>
+            </li>
+        </ul>
+
+        <!-- Conteúdo das Abas -->
+        <div class="tab-content" id="conteudoAbas">
+            
+            <!-- Aba 1: Texto -->
+            <div class="tab-pane fade show active" id="aba-texto" role="tabpanel" aria-labelledby="aba-texto-tab">
+                <div class="row">
+                    <!-- Seção Contadores -->
+                    <div class="col-md-6 mb-4">
+                        <h3>Contadores</h3>
+                        <div class="mb-3">
+                            <label for="textInputCounters" class="form-label">Digite ou cole seu texto:</label>
+                            <textarea class="form-control" id="textInputCounters" rows="8" placeholder="Digite ou cole seu texto aqui..."></textarea>
+                        </div>
+                        <div class="d-flex flex-wrap gap-3">
+                            <span id="charCount" class="badge bg-primary">Caracteres: 0</span>
+                            <span id="wordCount" class="badge bg-success">Palavras: 0</span>
+                            <span id="lineCount" class="badge bg-info">Linhas: 0</span>
+                            <span id="byteCount" class="badge bg-warning text-dark">Bytes: 0</span>
+                        </div>
+                    </div>
+
+                    <!-- Seção Conversores de Case -->
+                    <div class="col-md-6 mb-4">
+                        <h3>Conversores de Case</h3>
+                        <div class="mb-3">
+                            <label for="textInputCase" class="form-label">Digite ou cole seu texto:</label>
+                            <textarea class="form-control" id="textInputCase" rows="8" placeholder="Digite ou cole seu texto aqui..."></textarea>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn-secondary m-1" id="btnUppercase">MAIÚSCULAS</button>
+                            <button type="button" class="btn btn-secondary m-1" id="btnLowercase">minúsculas</button>
+                            <button type="button" class="btn btn-secondary m-1" id="btnTitlecase">Primeira Letra Maiúscula</button>
+                            <button type="button" class="btn btn-secondary m-1" id="btnCopyText">Copiar Texto</button>
+                            <button type="button" class="btn btn-secondary m-1" id="btnClearText">Limpar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aba 2: Encoders/Decoders -->
+            <div class="tab-pane fade" id="aba-encoders" role="tabpanel" aria-labelledby="aba-encoders-tab">
+                <div class="row">
+                    <!-- Seção Base64 -->
+                    <div class="col-md-6 mb-4">
+                        <h3>Base64</h3>
+                        <div class="mb-3">
+                            <label for="base64Input" class="form-label">Texto Normal:</label>
+                            <textarea class="form-control" id="base64Input" rows="8" placeholder="Digite o texto para codificar..."></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="base64Output" class="form-label">Texto Codificado/Decodificado:</label>
+                            <textarea class="form-control" id="base64Output" rows="8" placeholder="Resultado aparecerá aqui..."></textarea>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn-primary" id="btnBase64Encode">Encode (Texto -> Base64)</button>
+                            <button type="button" class="btn btn-primary" id="btnBase64Decode">Decode (Base64 -> Texto)</button>
+                            <button type="button" class="btn btn-secondary" id="btnBase64Swap">Trocar (Swap)</button>
+                        </div>
+                    </div>
+
+                    <!-- Seção URL -->
+                    <div class="col-md-6 mb-4">
+                        <h3>URL</h3>
+                        <div class="mb-3">
+                            <label for="urlInput" class="form-label">Texto Normal:</label>
+                            <textarea class="form-control" id="urlInput" rows="8" placeholder="Digite o texto para codificar..."></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="urlOutput" class="form-label">Texto Codificado/Decodificado:</label>
+                            <textarea class="form-control" id="urlOutput" rows="8" placeholder="Resultado aparecerá aqui..."></textarea>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn-primary" id="btnUrlEncode">Encode (URL)</button>
+                            <button type="button" class="btn btn-primary" id="btnUrlDecode">Decode (URL)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aba 3: Formatadores -->
+            <div class="tab-pane fade" id="aba-formatadores" role="tabpanel" aria-labelledby="aba-formatadores-tab">
+                <h3>Formatador JSON</h3>
+                <div id="jsonAlertContainer"></div>
+                <div class="mb-3">
+                    <label for="jsonInput" class="form-label">Cole ou digite seu JSON:</label>
+                    <textarea class="form-control" id="jsonInput" rows="20" placeholder='{"exemplo": "json", "array": [1, 2, 3]}'></textarea>
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                    <button type="button" class="btn btn-primary" id="btnJsonPrettify">Prettify / Formatar</button>
+                    <button type="button" class="btn btn-primary" id="btnJsonMinify">Minify / Compactar</button>
+                    <button type="button" class="btn btn-secondary" id="btnJsonCopy">Copiar</button>
+                    <button type="button" class="btn btn-secondary" id="btnJsonClear">Limpar</button>
+                </div>
+            </div>
+
+            <!-- Aba 4: Geradores de Dados -->
+            <div class="tab-pane fade" id="aba-geradores" role="tabpanel" aria-labelledby="aba-geradores-tab">
+                <h3>Geradores de Dados</h3>
+                
+                <!-- Gerador CPF -->
+                <div class="mb-4">
+                    <label class="form-label fw-bold">CPF</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="cpfOutput" readonly placeholder="CPF gerado aparecerá aqui">
+                        <button class="btn btn-outline-secondary" type="button" id="btnCopyCpf">Copiar</button>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnGenerateCpf">Gerar CPF</button>
+                </div>
+
+                <!-- Gerador CNPJ -->
+                <div class="mb-4">
+                    <label class="form-label fw-bold">CNPJ</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="cnpjOutput" readonly placeholder="CNPJ gerado aparecerá aqui">
+                        <button class="btn btn-outline-secondary" type="button" id="btnCopyCnpj">Copiar</button>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnGenerateCnpj">Gerar CNPJ</button>
+                </div>
+
+                <hr class="my-4">
+
+                <!-- Gerador Email -->
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Email</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="emailOutput" readonly placeholder="Email gerado aparecerá aqui">
+                        <button class="btn btn-outline-secondary" type="button" id="btnCopyEmail">Copiar</button>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnGenerateEmail">Gerar Email</button>
+                </div>
+
+                <!-- Gerador Telefone -->
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Telefone</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="telefoneOutput" readonly placeholder="Telefone gerado aparecerá aqui">
+                        <button class="btn btn-outline-secondary" type="button" id="btnCopyTelefone">Copiar</button>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnGenerateTelefone">Gerar Telefone</button>
+                </div>
+
+                <!-- Gerador Data/Hora -->
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Data/Hora</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="dataOutput" readonly placeholder="Data/Hora gerada aparecerá aqui">
+                        <button class="btn btn-outline-secondary" type="button" id="btnCopyData">Copiar</button>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="button" class="btn btn-primary" id="btnGenerateDataBR">Gerar Data (BR)</button>
+                        <button type="button" class="btn btn-primary" id="btnGenerateDataISO">Gerar Data (ISO)</button>
+                        <button type="button" class="btn btn-primary" id="btnGenerateTimestamp">Gerar Timestamp</button>
+                    </div>
+                </div>
+
+                <!-- Gerador UUID -->
+                <div class="mb-4">
+                    <label class="form-label fw-bold">UUID/GUID</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="uuidOutput" readonly placeholder="UUID gerado aparecerá aqui">
+                        <button class="btn btn-outline-secondary" type="button" id="btnCopyUuid">Copiar</button>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnGenerateUuid">Gerar UUID</button>
+                </div>
+
+                <!-- Gerador CEP -->
+                <div class="mb-4">
+                    <label class="form-label fw-bold">CEP</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="cepOutput" readonly placeholder="CEP gerado aparecerá aqui">
+                        <button class="btn btn-outline-secondary" type="button" id="btnCopyCep">Copiar</button>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnGenerateCep">Gerar CEP</button>
+                </div>
+
+                <!-- Gerador Nome Completo -->
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Nome Completo</label>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" id="nomeOutput" readonly placeholder="Nome completo gerado aparecerá aqui">
+                        <button class="btn btn-outline-secondary" type="button" id="btnCopyNome">Copiar</button>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnGenerateNome">Gerar Nome Completo</button>
+                </div>
+            </div>
+
+            <!-- Aba 5: Comparador -->
+            <div class="tab-pane fade" id="aba-comparador" role="tabpanel" aria-labelledby="aba-comparador-tab">
+                <h3>Comparador de Textos/JSON</h3>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="comparadorTexto1" class="form-label">Texto 1:</label>
+                        <textarea class="form-control" id="comparadorTexto1" rows="15" placeholder="Cole o primeiro texto ou JSON aqui..."></textarea>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="comparadorTexto2" class="form-label">Texto 2:</label>
+                        <textarea class="form-control" id="comparadorTexto2" rows="15" placeholder="Cole o segundo texto ou JSON aqui..."></textarea>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-primary" id="btnComparar">Comparar</button>
+                    <button type="button" class="btn btn-secondary" id="btnLimparComparador">Limpar</button>
+                </div>
+                <div id="comparadorResultado" class="mt-3"></div>
+            </div>
+
+            <!-- Aba 6: JWT & Hash -->
+            <div class="tab-pane fade" id="aba-jwt-hash" role="tabpanel" aria-labelledby="aba-jwt-hash-tab">
+                <div class="row">
+                    <!-- Seção JWT Decoder -->
+                    <div class="col-md-6 mb-4">
+                        <h3>Decodificador JWT</h3>
+                        <div class="mb-3">
+                            <label for="jwtInput" class="form-label">Cole o token JWT:</label>
+                            <textarea class="form-control" id="jwtInput" rows="4" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary mb-3" id="btnDecodificarJwt">Decodificar JWT</button>
+                        <div id="jwtResultado"></div>
+                    </div>
+
+                    <!-- Seção Hash Generator -->
+                    <div class="col-md-6 mb-4">
+                        <h3>Gerador de Hash</h3>
+                        <div class="mb-3">
+                            <label for="hashInput" class="form-label">Digite o texto para gerar hash:</label>
+                            <textarea class="form-control" id="hashInput" rows="4" placeholder="Digite o texto aqui..."></textarea>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <button type="button" class="btn btn-primary" id="btnHashMD5">MD5</button>
+                            <button type="button" class="btn btn-primary" id="btnHashSHA256">SHA-256</button>
+                            <button type="button" class="btn btn-primary" id="btnHashSHA512">SHA-512</button>
+                        </div>
+                        <div class="mb-3">
+                            <label for="hashOutput" class="form-label">Hash gerado:</label>
+                            <textarea class="form-control" id="hashOutput" rows="3" readonly placeholder="Hash aparecerá aqui..."></textarea>
+                        </div>
+                        <button type="button" class="btn btn-secondary" id="btnCopyHash">Copiar Hash</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aba 7: Regex Tester -->
+            <div class="tab-pane fade" id="aba-regex" role="tabpanel" aria-labelledby="aba-regex-tab">
+                <h3>Testador de Expressões Regulares</h3>
+                <div class="mb-3">
+                    <label for="regexPattern" class="form-label">Expressão Regular:</label>
+                    <input type="text" class="form-control" id="regexPattern" placeholder="Ex: ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                    <small class="form-text text-muted">Use flags: g (global), i (case-insensitive), m (multiline)</small>
+                </div>
+                <div class="mb-3">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="regexFlagG" value="g">
+                        <label class="form-check-label" for="regexFlagG">Global (g)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="regexFlagI" value="i">
+                        <label class="form-check-label" for="regexFlagI">Case-insensitive (i)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="regexFlagM" value="m">
+                        <label class="form-check-label" for="regexFlagM">Multiline (m)</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="regexTestText" class="form-label">Texto para testar:</label>
+                    <textarea class="form-control" id="regexTestText" rows="8" placeholder="Digite ou cole o texto para testar a expressão regular..."></textarea>
+                </div>
+                <button type="button" class="btn btn-primary mb-3" id="btnTestarRegex">Testar Regex</button>
+                <div id="regexResultado"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="bg-light mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <!-- Privacidade e Segurança -->
+                <div class="col-md-4 mb-3">
+                    <h6 class="fw-bold">🔒 Privacidade e Segurança</h6>
+                    <ul class="list-unstyled small">
+                        <li>✅ Dados ficam apenas no seu navegador (LocalStorage)</li>
+                        <li>✅ Nenhum dado é enviado para servidores</li>
+                        <li>✅ Não há compartilhamento entre usuários</li>
+                        <li>✅ Funciona online e offline após o carregamento</li>
+                    </ul>
+                </div>
+
+                <!-- Guia de Uso -->
+                <div class="col-md-4 mb-3">
+                    <h6 class="fw-bold">📖 Como Usar</h6>
+                    <ul class="list-unstyled small">
+                        <li>1. Navegue pelas abas no menu superior</li>
+                        <li>2. Use as ferramentas conforme sua necessidade</li>
+                        <li>3. Copie os resultados usando os botões de copiar</li>
+                        <li>4. Todas as ferramentas funcionam offline</li>
+                    </ul>
+                    <p class="small mb-0">
+                        <strong>Dica:</strong> Após o primeiro carregamento, você pode usar a ferramenta sem internet!
+                    </p>
+                </div>
+
+                <!-- Documentação e Links -->
+                <div class="col-md-4 mb-3">
+                    <h6 class="fw-bold">📚 Documentação</h6>
+                    <ul class="list-unstyled small">
+                        <li>
+                            <a href="https://github.com/Bella5900g/qa-toolbox" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                📖 Ver Documentação Completa
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Bella5900g/qa-toolbox" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                🔗 Repositório no GitHub
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Bella5900g/qa-toolbox" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                                ⭐ Dar uma Estrela
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="my-3">
+
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="small mb-2">
+                        <strong>QA-Toolbox</strong> - Ferramentas essenciais e gratuitas para profissionais de QA
+                    </p>
+                    <p class="small text-muted mb-0">
+                        Desenvolvido com ❤️ por 
+                        <a href="https://www.linkedin.com/in/isabellavieiraqa/" target="_blank" rel="noopener noreferrer" class="text-decoration-none">Isabella Barbosa</a> | 
+                        <a href="https://github.com/Bella5900g/qa-toolbox/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="text-decoration-none">Licença MIT</a> | 
+                        <a href="https://github.com/Bella5900g/qa-toolbox" target="_blank" rel="noopener noreferrer" class="text-decoration-none">Open Source</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Crypto-JS para MD5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    
+    <!-- JavaScript Customizado -->
+    <script src="script.js"></script>
+</body>
+</html>
+
