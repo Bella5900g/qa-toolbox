@@ -366,5 +366,3 @@ Se este projeto foi útil para você, considere dar uma ⭐ no repositório!
 
 **Desenvolvido com ❤️ para a comunidade QA**
 
-*Última atualização: Janeiro 2024*
-
