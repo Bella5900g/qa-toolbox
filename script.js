@@ -820,7 +820,12 @@ document.addEventListener('DOMContentLoaded', function() {
             html += '<h5 class="card-title">Resultado do Teste Regex</h5>';
             
             if (todasMatches.length === 0) {
-                html += '<div class="alert alert-warning">Nenhuma correspondência encontrada.</div>';
+                let dica = '';
+                // Verificar se a regex usa âncoras de início/fim
+                if (pattern.startsWith('^') || pattern.endsWith('$')) {
+                    dica = '<div class="alert alert-info mt-2"><small><strong>💡 Dica:</strong> Sua regex usa âncoras <code>^</code> (início) ou <code>$</code> (fim). Isso significa que ela só encontra correspondências quando o padrão é a string inteira. Para encontrar padrões no meio do texto, remova essas âncoras.</small></div>';
+                }
+                html += '<div class="alert alert-warning">Nenhuma correspondência encontrada.</div>' + dica;
             } else {
                 html += `<div class="alert alert-success">Encontradas ${todasMatches.length} correspondência(s).</div>`;
                 html += '<div class="table-responsive"><table class="table table-sm table-bordered">';
