@@ -436,6 +436,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const dataOutput = document.getElementById('dataOutput');
     const btnGenerateDataBR = document.getElementById('btnGenerateDataBR');
     const btnGenerateDataISO = document.getElementById('btnGenerateDataISO');
+    const btnConvertTimeStampBR = document.getElementById('btnConvertTimeStampBR');
     const btnGenerateTimestamp = document.getElementById('btnGenerateTimestamp');
     const btnCopyData = document.getElementById('btnCopyData');
 
@@ -453,10 +454,24 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = new Date();
         dataOutput.value = data.toISOString();
     });
-
+    btnConvertTimeStampBR.addEventListener('click', function() {
+        const timestamp = parseInt(document.getElementById('dataInput').value);
+        if (isNaN(timestamp)) {
+            alert('Por favor, insira um timestamp válido.');
+            return;
+        }
+        const data = new Date(timestamp * 1000);
+        const dia = String(data.getDate()).padStart(2, '0');
+        const mes = String(data.getMonth() + 1).padStart(2, '0');
+        const ano = data.getFullYear();
+        const hora = String(data.getHours()).padStart(2, '0');
+        const minuto = String(data.getMinutes()).padStart(2, '0');
+        dataOutput.value = `${dia}/${mes}/${ano} ${hora}:${minuto}`;
+    });
     btnGenerateTimestamp.addEventListener('click', function() {
         dataOutput.value = Math.floor(Date.now() / 1000).toString();
     });
+
 
     btnCopyData.addEventListener('click', function() {
         if (dataOutput.value) {
